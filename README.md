@@ -1,0 +1,29 @@
+gabriel - "Thou shalt not type full god commands"
+=================================================
+
+Gabriel gives you tab-completion for your god commands, tasks, and groups in bash.
+
+Options are not currently supported but will be in the near future.
+
+How to Use
+----------
+
+Source gabriel.bash from your `.bash_profile` or `.bashrc` and you're good to go.
+
+    $ god st<TAB>
+    start   status  stop
+    
+    $ god status
+    atest: up
+    btest: up
+    ctest: up
+    
+    $ god start <TAB>
+    atest  btest  ctest
+    
+How to Contribute
+-----------------
+
+This is currently very alpha and honestly, I have little acquaintance with shell scripting.
+
+If you can find a way to make Gabriel's completions even better, please do send a pull request.
