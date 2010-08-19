@@ -26,9 +26,14 @@ _god() {
   prev="${COMP_WORDS[COMP_CWORD-1]}"
 
   case "${prev}" in
-    start|stop|restart|monitor|unmonitor|remove|status|signal)
+    start|stop|restart|monitor|unmonitor|remove|status)
       local tasks="$(__god_task_group_names)"
       COMPREPLY=( $(compgen -W "${tasks}" -- ${cur}) )
+      return 0
+      ;;
+    signal)
+      local tasks="$(__god_task_group_names)"
+      COMPREPLY=( $(compgen -W "${tasks}" -A signal -- ${cur}) )
       return 0
       ;;
     load|-c|--config-file|-P|--pid|-l|--log)
