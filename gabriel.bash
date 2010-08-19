@@ -2,10 +2,6 @@
 #
 # gabriel.bash
 # Bash completion for god
-#
-# Provides completion for:
-#   - god commands: start/stop/restart/monitor/unmonitor/remove/status/signal/load/quit/terminate
-#   - tasks and groups for god commands that use them
 
 __god_commands='start stop restart monitor unmonitor remove status signal load quit terminate check'
 
