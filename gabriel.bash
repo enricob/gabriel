@@ -5,6 +5,12 @@
 
 __god_commands='start stop restart monitor unmonitor remove status signal load quit terminate check'
 
+__god_options_long='--config-file --port --auto-bind --pid --log --no-daemonize --version --log-level --no-syslog --attach --no-events --bleakhouse'
+__god_options_short='-c -p -b -P -l -D -v -V'
+__god_options="${__god_options_long} ${__god_options_short}"
+
+__god_log_levels="debug info warn error fatal"
+
 __god_task_group_names() {
   god status > /dev/null
   if [ "$?" -eq "0" ]; then
@@ -25,15 +31,19 @@ _god() {
       COMPREPLY=( $(compgen -W "${tasks}" -- ${cur}) )
       return 0
       ;;
-    load)
+    load|-c|--config-file|-P|--pid|-l|--log)
       COMPREPLY=( $(compgen -A file -- ${cur}) )
+      return 0
+      ;;
+    --log-level)
+      COMPREPLY=( $(compgen -W "${__god_log_levels}" -- ${cur}) )
       return 0
       ;;
     *)
     ;;
   esac
 
-  COMPREPLY=( $(compgen -W "${__god_commands}" -- ${cur}) )
+  COMPREPLY=( $(compgen -W "${__god_commands} ${__god_options}" -- ${cur}) )
   return 0
 }
 complete -F _god god
