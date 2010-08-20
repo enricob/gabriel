@@ -1,9 +1,7 @@
 gabriel - "Thou shalt not type full god commands"
 =================================================
 
-Gabriel gives you tab-completion for your god commands, tasks, and groups in bash.
-
-Options are not currently supported but will be in the near future.
+Gabriel gives you tab-completion for god commands, options, tasks, and groups in bash.
 
 How to Use
 ----------
