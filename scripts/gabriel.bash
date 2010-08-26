@@ -1,4 +1,4 @@
-#!bash
+#!/usr/bin/env bash
 #
 # gabriel.bash
 # Bash completion for god

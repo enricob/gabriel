@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+# Take it away, bash!
+exec "bash -l -c 'cd #{File.dirname(File.dirname(__FILE__))} && ./install'"

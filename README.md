@@ -6,7 +6,7 @@ Gabriel gives you tab-completion for god commands, options, tasks, and groups in
 How to Use
 ----------
 
-Source gabriel.bash from your `.bash_profile` or `.bashrc` and you're good to go.
+Run `bin/gabriel-install`, follow the directions given, and you're good to go.
 
     $ god st<TAB>
     start   status  stop
