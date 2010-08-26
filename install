@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
 
-if [ ! -s ~/.gabriel.bash ] ; then
-  ln -sf `pwd`/scripts/gabriel.bash ~/.gabriel.bash
+if [ ! -d ~/.gabriel ] ; then
+  mkdir -p ~/.gabriel
 fi
 
+cp -f `pwd`/scripts/gabriel.bash ~/.gabriel/gabriel.bash
+
 touch ~/.bashrc
-grep "~\/.gabriel.bash" ~/.bashrc > /dev/null
+grep "gabriel.bash" ~/.bashrc > /dev/null
 if [ $? != 0 ] ; then
   echo "" >> ~/.bashrc
-  echo "source ~/.gabriel.bash" >> ~/.bashrc
+  echo "source ~/.gabriel/gabriel.bash" >> ~/.bashrc
 fi
 
 printf "DONE! To activate the installed completions:\n\n"
-printf "1) Ensure that ~/.bashrc is sourced from your profile (~/.bash_profile or ~/.profile).\n"
-printf "You want to see a line that looks like this: source ~/.bashrc OR . ~/.bashrc\n\n"
-printf "2) Exit and re-enter your shell or issue the following command\n"
-printf "$ source ~/.gabriel.bash\n\n"
+printf "1) Ensure that ~/.bashrc is sourced from your profile (~/.bash_profile or ~/.profile):\n"
+printf "$ echo \"source ~/.bashrc\" >> ~/.bash_profile\n\n"
+printf "2) Exit and re-enter your shell or issue the following command:\n"
+printf "$ source ~/.gabriel/gabriel.bash\n\n"
 printf "Enjoy!  -- Enrico B\n"
