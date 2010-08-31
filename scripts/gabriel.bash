@@ -11,10 +11,19 @@ __god_options="${__god_options_long} ${__god_options_short}"
 
 __god_log_levels="debug info warn error fatal"
 
-__god_task_group_names() {
+__god_tasks_and_groups() {
   god status > /dev/null
   if [ "$?" -eq "0" ]; then
     god status | awk '{ print $1 }' | tr -d \\n | sed 's/:/ /g'
+  else
+    echo ""
+  fi
+}
+
+__god_tasks() {
+  god status > /dev/null
+  if [ "$?" -eq "0" ]; then
+    god status | grep "  " | awk '{ print $1 }' | tr -d \\n | sed 's/:/ /g'
   else
     echo ""
   fi
@@ -27,13 +36,18 @@ _god() {
 
   case "${prev}" in
     start|stop|restart|monitor|unmonitor|remove|status)
-      local tasks="$(__god_task_group_names)"
-      COMPREPLY=( $(compgen -W "${tasks}" -- ${cur}) )
+      local tasks_and_groups="$(__god_tasks_and_groups)"
+      COMPREPLY=( $(compgen -W "${tasks_and_groups}" -- ${cur}) )
       return 0
       ;;
     signal)
-      local tasks="$(__god_task_group_names)"
-      COMPREPLY=( $(compgen -W "${tasks}" -A signal -- ${cur}) )
+      local tasks_and_groups="$(__god_tasks_and_groups)"
+      COMPREPLY=( $(compgen -W "${tasks_and_groups}" -A signal -- ${cur}) )
+      return 0
+      ;;
+    log)
+      local tasks="$(__god_tasks)"
+      COMPREPLY=( $(compgen -W "${tasks}" -- ${cur}) )
       return 0
       ;;
     --log-level)
