@@ -36,19 +36,16 @@ _god() {
       COMPREPLY=( $(compgen -W "${tasks}" -A signal -- ${cur}) )
       return 0
       ;;
-    load|-c|--config-file|-P|--pid|-l|--log)
-      COMPREPLY=( $(compgen -A file -- ${cur}) )
-      return 0
-      ;;
     --log-level)
       COMPREPLY=( $(compgen -W "${__god_log_levels}" -- ${cur}) )
+      return 0
+      ;;
+    god)
+      COMPREPLY=( $(compgen -W "${__god_commands} ${__god_options}" -- ${cur}) )
       return 0
       ;;
     *)
     ;;
   esac
-
-  COMPREPLY=( $(compgen -W "${__god_commands} ${__god_options}" -- ${cur}) )
-  return 0
 }
-complete -F _god god
+complete -o bashdefault -o default -o nospace -F _god god
