@@ -12,7 +12,7 @@ begin
     gemspec.homepage = "http://github.com/enricob/gabriel"
     gemspec.authors = ["Enrico Bianco"]
     gemspec.executables = ["gabriel-install"]
-    gemspec.files = ["README.md", "LICENSE", "VERSION", "install", "bin/*", "scripts/*"]
+    gemspec.files = ["README.md", "LICENSE", "VERSION", "install", "bin/*", "scripts/*", "lib/*"]
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
