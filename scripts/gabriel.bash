@@ -54,12 +54,17 @@ _god() {
       COMPREPLY=( $(compgen -W "${__god_log_levels}" -- ${cur}) )
       return 0
       ;;
+    load|-P|-l|-c|--config-file)
+      # Use default completions
+      ;;
     god)
       COMPREPLY=( $(compgen -W "${__god_commands} ${__god_options}" -- ${cur}) )
       return 0
       ;;
     *)
-    ;;
+      COMPREPLY=( $(compgen -W "${__god_options}" -- ${cur}) )
+      return 0
+      ;;
   esac
 }
 complete -o bashdefault -o default -o nospace -F _god god
